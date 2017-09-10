@@ -1,5 +1,26 @@
+
 .App {
   text-align: center;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+/*  Colors
+---------------------*/
+.list-bookshelves {color: green}
+.list-books {color: tomato}
+
+
+/*  Header
+-------------------- */
+.App-header {
+  background-color: green;
+  font-size: 1.3em;
+  height: 150px;
+  padding: 20px;
+  color: white;
 }
 
 .App-logo {
@@ -7,18 +28,63 @@
   height: 80px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+/*  Book shelf
+-------------------- */
+.list-bookshelves {
+
+}
+
+.list-bookshelves-top{
+
+}
+
+.bookshelf-list{
+
+}
+
+.bookshelf-list-item{
+
+}
+
+.bookshelf-title{
+
+}
+
+
+
+/*  Book List
+-------------------- */
+.list-books {
+
+}
+
+.book-list{
+
+}
+
+.book-list-item{
+  width: 200px;
+  height: 300px;
+  border: 1px solid #222
+}
+
+.book-title{
+}
+
+.book-author{
+
+}
+
+.book-menu{
+}
+
+
+/*  Search
+-------------------- */
+
+
