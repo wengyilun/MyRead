@@ -5,32 +5,38 @@
  
  class ListBookshelves extends Component{
 	states = {
-		categories: {
-			'currentlyReading': 'Currently Reading',
-			'wantToRead': 'Want to Read',
-			'read': 'Read'
-		}
+		shelves: [
+			{status: 'currentlyReading', label: 'Currently Reading'},
+			{status:'wantToRead',  label: 'Want to Read'},
+			{status:'read',  label:'Read'}
+		]
 	}
+	
 	render(){
+	
 		return(
 			<div className="list-bookshelves">
-				<div className="list-bookshelves-top">
-					<h2>Bookshelvs</h2>
-				</div>
-				{this.props.books.map((book)=>(
+				
 					< ul className = "bookshelf-list">
-						< li key={book.id} className = "bookshelf-list-item" >
-							<ul className="list-books">
-								<li className="book-list">
-									<div className="book-list-item">
-										<p>{book.title}</p>
-										<p>{book.authors}</p>
-									</div>
-								</li>
-							</ul>
-						{book.shelf}
-						</li>
-				   </ul>))}
+						{this.states.shelves.map((shelf)=>(
+						
+						< li key={shelf.id} className = "bookshelf-list-item" >
+							<div className="list-bookshelves-top">
+								<h2>{shelf.label}</h2>
+							</div>
+							
+							<div className="book-list">
+								{this.props.books.map((book)=>(
+								<div className="book-list-item" key={book.id} >
+									<div className="book-cover" style={{
+										backgroundImage: 'url("http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api")' }}/>
+									<div className="book-title">{book.title} </div>
+									<div className="book-author">{book.authors}</div>
+								</div>
+								))}
+							</div>
+						</li>))}
+				   </ul>
 			</div>
 		)
 	}

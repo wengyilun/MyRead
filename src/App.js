@@ -281,14 +281,13 @@ class App extends Component {
 			}
 			]
 	}
-
-
-  render() {
+	
+	
+	render() {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>MyReads</h2>
+          <h2>My Reads</h2>
         </div>
         <ListBookshelves books={this.states.books}/>
       </div>

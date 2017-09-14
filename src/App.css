@@ -1,4 +1,7 @@
-
+* {
+  /*outline: 1px solid red;*/
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
 }
@@ -12,15 +15,28 @@
 .list-bookshelves {color: green}
 .list-books {color: tomato}
 
+h1, h2, h3, h4 {
+  margin: 0;
+}
+a {
+ text-decoration: none;
+}
+ul {
+ list-style: none;
 
+}
+
+li {
+  display: inline;
+}
 /*  Header
 -------------------- */
 .App-header {
-  background-color: green;
-  font-size: 1.3em;
-  height: 150px;
+  background-color: #BFBAA3;
+  font-size: 2.4em;
   padding: 20px;
-  color: white;
+  font-family: Melo-Regular;
+  color: #FFFFFF;
 }
 
 .App-logo {
@@ -36,15 +52,27 @@
 /*  Book shelf
 -------------------- */
 .list-bookshelves {
-
+  width: 100%;
+  height: 100%;
+  background-color: #F9F0E9;
 }
 
 .list-bookshelves-top{
+  /* currently REading: */
+  font-family: Melo-Regular;
+  font-size: 36px;
+  color: #000000;
+  background-color: white;
+  width: 99%;
+  height: 90%;
+  text-align: left;
+  padding-left: 20px;
 
 }
 
 .bookshelf-list{
-
+  display: flex;
+  flex-direction: column;
 }
 
 .bookshelf-list-item{
@@ -64,20 +92,36 @@
 }
 
 .book-list{
-
-}
+  display: flex;
+  flex-flow: row wrap;
+  }
 
 .book-list-item{
-  width: 200px;
-  height: 300px;
-  border: 1px solid #222
+  background-color: #BFBAA3;
+  width: 140px;
+  height: 200px;
+  margin: 20px;
+  padding: 8px;
+  border-radius: 0 0 4px 4px;
+}
+
+.book-cover {
+   width: 100%;
+   height: 120px;
 }
 
 .book-title{
+  font-family: AbadiMT-CondensedExtraBold;
+  font-size: 12px;
+  color: #000000;
+  padding: 8px 4px;
 }
 
 .book-author{
-
+  font-family: AbadiMT-CondensedLight;
+  font-size: 12px;
+  color: #000000;
+  padding: 0px 2px 8px 2px;
 }
 
 .book-menu{
