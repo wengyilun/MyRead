@@ -3,6 +3,8 @@
   box-sizing: border-box;
 }
 .App {
+  display: flex;
+  width: 100%;
   text-align: center;
 }
 
@@ -23,7 +25,6 @@ a {
 }
 ul {
  list-style: none;
-
 }
 
 li {
@@ -52,7 +53,7 @@ li {
 /*  Book shelf
 -------------------- */
 .list-bookshelves {
-  width: 100%;
+  width: 94%;
   height: 100%;
   background-color: #F9F0E9;
 }
@@ -98,8 +99,8 @@ li {
 
 .book-list-item{
   background-color: #BFBAA3;
-  width: 140px;
-  height: 200px;
+  width: 160px;
+  height: 220px;
   margin: 20px;
   padding: 8px;
   border-radius: 0 0 4px 4px;
@@ -107,7 +108,7 @@ li {
 
 .book-cover {
    width: 100%;
-   height: 120px;
+   height: 130px;
 }
 
 .book-title{
@@ -115,13 +116,16 @@ li {
   font-size: 12px;
   color: #000000;
   padding: 8px 4px;
+  background-color:white;
 }
 
 .book-author{
   font-family: AbadiMT-CondensedLight;
   font-size: 12px;
   color: #000000;
-  padding: 0px 2px 8px 2px;
+  padding: 0px 4px 8px 4px;
+  background-color:white;
+
 }
 
 .book-menu{
