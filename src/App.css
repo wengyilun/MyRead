@@ -2,6 +2,11 @@
   /*outline: 1px solid red;*/
   box-sizing: border-box;
 }
+
+html, body, .root{
+  height: 100%;
+}
+
 .App {
   display: flex;
   width: 100%;
@@ -39,6 +44,25 @@ li {
   font-family: Melo-Regular;
   color: #FFFFFF;
 }
+@media(max-width: 420px) {
+  .App {
+    flex-direction: column;
+  }
+
+  .list-bookshelves {
+    width: 100%;
+  }
+
+  .book-list-item {
+    transform: scale(1.1, 1.1);
+    margin-bottom: 20px;
+  }
+
+  .list-bookshelves-top {
+    margin-bottom: 40px;
+    margin-top: 40px;
+  }
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -62,7 +86,7 @@ li {
   /* currently REading: */
   font-family: Melo-Regular;
   font-size: 36px;
-  color: #000000;
+  color: #593814;
   background-color: white;
   width: 99%;
   height: 90%;
@@ -95,41 +119,78 @@ li {
 .book-list{
   display: flex;
   flex-flow: row wrap;
+  justify-content: flex-start;
   }
 
+.book-list-item-container{
+  display: flex;
+  align-items: center;
+}
+
 .book-list-item{
+  position: relative;
   background-color: #BFBAA3;
+  border: 1px solid #222;
   width: 160px;
-  height: 220px;
-  margin: 20px;
-  padding: 8px;
+  height: 230px;
+  margin: 20px ;
+  padding: 10px;
   border-radius: 0 0 4px 4px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  display:flex;
 }
 
 .book-cover {
    width: 100%;
-   height: 130px;
+   height: 200px;
+   border: 1px solid #593814;
+}
+
+.book-footer{
+  width: 200px;
+  height: 100px;
+  padding: 0 20px;
 }
 
 .book-title{
   font-family: AbadiMT-CondensedExtraBold;
-  font-size: 12px;
-  color: #000000;
-  padding: 8px 4px;
-  background-color:white;
+  font-size: 18px;
+  color: #593814;
+  padding: 20px 4px;
+  border-top: 1px solid #A37152;
 }
 
 .book-author{
   font-family: AbadiMT-CondensedLight;
-  font-size: 12px;
-  color: #000000;
-  padding: 0px 4px 8px 4px;
-  background-color:white;
+  font-size: 14px;
+  color: #593814;
+  padding: 6px 4px 20px 4px;
+  border-bottom: 1px solid #A37152
 
+}
+.book-menu-button{
+  position:absolute;
+  background: #593814;
+  /*border: 1px solid white;*/
+  right: -26px;
+  bottom: 0px;
+  width: 26px;
+  height: 26px;
+  border-radius: 2px;
+  background-image: url('./icons/arrow-drop-down.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px;
+  border: 1px solid #593814;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16), 0 2px 6px rgba(0, 0, 0, 0.23);
 }
 
 .book-menu{
+  position: relative;
+  height: 100px;
 }
+
 
 
 /*  Search

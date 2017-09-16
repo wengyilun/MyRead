@@ -16,7 +16,7 @@
 	
 	render(){
 		let sortBooks = shelf => (
-			this.props.books.filter(book => book.shelf == shelf)
+			this.props.books.filter(book => book.shelf === shelf)
 	    )
 	    
 		return(
