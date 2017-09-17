@@ -10,10 +10,6 @@ class Book extends Component {
 		 read:'Read',
   }
   
-	// onStatusChange =(book, value) => {
-	//     book.shelf = value
-	// }
-	
   render ()
 {
 	const {shelf} = this.state

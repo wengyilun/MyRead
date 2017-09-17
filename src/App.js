@@ -288,8 +288,10 @@ class App extends Component {
 		  this.setState({books})
 		})
 	}
-	onUpdateStatus = (books) => {
-	  this.setState()
+	onUpdateStatus = (book, shelf) => {
+	   console.log('onUpdateStatus', book)
+	   BooksAPI.update(book, shelf);
+	   // Todo: need to add fail listener
 	}
 	
 	render() {
@@ -298,7 +300,7 @@ class App extends Component {
         <div className="App-header">
           <h2>My Reads</h2>
         </div>
-        <ListBookshelves books={this.state.books} onBookStatusChange={this.onUpdateStatus}/>
+        <ListBookshelves books={this.state.books} onUpdate={this.onUpdateStatus}/>
       </div>
     );
   }

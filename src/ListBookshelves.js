@@ -19,13 +19,14 @@
 	}
 	 
 	 onBookStatusChange =(book, newShelf) => {
-	   book.shelf = newShelf
-	   this.setState({books: this.props.books})
+	     book.shelf = newShelf
+		 this.props.onUpdate(book, newShelf)
+		 this.setState({books: this.props.books})
 	 }
 	 
 	render(){
 		const {shelves} = this.state
-		const {books, onStatusChange} = this.props
+		const {books, onUpdate} = this.props
 		let sortBooks = shelf => (
 			books.filter(book => book.shelf === shelf)
 		)
@@ -41,7 +42,7 @@
 							
 							<div className="book-list">
 								{sortBooks(shelf.name).map((book)=>(
-								<Book key={book.id} book={book} shelves={shelves} onStatusChange={this.onBookStatusChange}/>
+								<Book key={book.id} book={book} shelves={shelves} onStatusChange={this.onBookStatusChange} />
 								))}
 							</div>
 						</li>))}

@@ -18,3 +18,19 @@ export const getAll = () =>
 	fetch(`${api}/books`, { headers })
 	.then(res => res.json())
 	.then(data => data.books)
+	
+export const update = (book, shelf) => {
+  console.log('book', book)
+	console.log('shelf', shelf)
+	console.log(book.id)
+	fetch(`${api}/books/${book.id}`, {
+    method: 'PUT',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({shelf})
+}).then(res => res.json())
+   .then(res => {
+    console.log(res)
+   })}
