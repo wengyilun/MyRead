@@ -6,32 +6,39 @@
  
  class ListBookshelves extends Component{
 	state = {
-		shelves: [
-			{status: 'currentlyReading', label: 'Currently Reading'},
-			{status:'wantToRead',  label: 'Want to Read'},
-			{status:'read',  label:'Read'}
-		]
+		// shelves: [
+		// 	{status: 'currentlyReading', label: 'Currently Reading', books:[]},
+		// 	{status:'wantToRead',  label: 'Want to Read', books:[]},
+		// 	{status:'read',  label:'Read', books:[]}
+		// ]
+		shelves:
+			[ {name:'currentlyReading', label: 'Currently Reading', books: []},
+			  {name: 'wantToRead', label: 'Want to Read', books: []},
+			  {name:'read', label: 'Read', books: []}
+		    ]
 	}
-	
+
 	
 	render(){
+	    let arr
 		let sortBooks = shelf => (
-			this.props.books.filter(book => book.shelf === shelf)
-	    )
-	    
+			arr = this.props.books.filter(book => book.shelf === shelf)
+		)
+		const {shelves} = this.state
+		
 		return(
 			<div className="list-bookshelves">
 					< ul className = "bookshelf-list">
-						{this.state.shelves.map((shelf)=>(
-						
+						{shelves.map((shelf)=> (
 						< li key={shelf.id} className = "bookshelf-list-item" >
 							<div className="list-bookshelves-top">
 								<h2>{shelf.label}</h2>
+								 {console.log(shelf.label)}
 							</div>
 							
 							<div className="book-list">
-								{sortBooks(shelf.status).map((book)=>(
-								<Book key={book.id} book={book}/>
+								{sortBooks(shelf.name).map((book)=>(
+								<Book key={book.id} book={book} shelves={shelves}/>
 								))}
 							</div>
 						</li>))}
