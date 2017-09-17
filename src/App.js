@@ -288,13 +288,17 @@ class App extends Component {
 		  this.setState({books})
 		})
 	}
+	onUpdateStatus = (books) => {
+	  this.setState()
+	}
+	
 	render() {
     return (
       <div className="App">
         <div className="App-header">
           <h2>My Reads</h2>
         </div>
-        <ListBookshelves books={this.state.books}/>
+        <ListBookshelves books={this.state.books} onBookStatusChange={this.onUpdateStatus}/>
       </div>
     );
   }

@@ -10,24 +10,21 @@ class Book extends Component {
 		 read:'Read',
   }
   
-	onOpenMenu =(book, value) => {
-	    book.shelf = value
-	    console.log(book)
-		// let shelfObj = this.props.shelves.filter((shelf) => shelf.name === value)
-		// console.log(shelfObj[0].books)
-		// shelfObj[0].books.push[book]
-	}
+	// onStatusChange =(book, value) => {
+	//     book.shelf = value
+	// }
 	
   render ()
 {
-	const {book, shelves} = this.props
+	const {shelf} = this.state
+	const {book, onStatusChange} = this.props
 	
 	return (
 		<div className="book-list-item-container">
 			<div className="book-holder">
 				<div className="book-status-changer">
-					<select className="book-status-menu"
-							onChange={ (event) => this.onOpenMenu(book, event.target.value)}>
+					<select className="book-status-menu" value={book.shelf}
+							onChange={ (event) => onStatusChange(book, event.target.value)}>
 						<option value="none" disabled>Move to ...</option>
 						<option value="currentlyReading">Currently Reading</option>
 						<option value="wantToRead">Want to Read</option>

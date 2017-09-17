@@ -6,25 +6,29 @@
  
  class ListBookshelves extends Component{
 	state = {
-		// shelves: [
-		// 	{status: 'currentlyReading', label: 'Currently Reading', books:[]},
-		// 	{status:'wantToRead',  label: 'Want to Read', books:[]},
-		// 	{status:'read',  label:'Read', books:[]}
-		// ]
-		shelves:
-			[ {name:'currentlyReading', label: 'Currently Reading', books: []},
-			  {name: 'wantToRead', label: 'Want to Read', books: []},
-			  {name:'read', label: 'Read', books: []}
-		    ]
+		shelves: [
+			{name: 'currentlyReading', label: 'Currently Reading', books:[]},
+			{name:'wantToRead',  label: 'Want to Read', books:[]},
+			{name:'read',  label:'Read', books:[]}
+		],
+			 // 'currentlyReading': {label: 'Currently Reading', books: []},
+		     // 'wantToRead': { label: 'Want to Read', books: []},
+		     // 'read': { label: 'Read', books: []}
+		books: [
+		]
 	}
-
-	
+	 
+	 onBookStatusChange =(book, newShelf) => {
+	   book.shelf = newShelf
+	   this.setState({books: this.props.books})
+	 }
+	 
 	render(){
-	    let arr
-		let sortBooks = shelf => (
-			arr = this.props.books.filter(book => book.shelf === shelf)
-		)
 		const {shelves} = this.state
+		const {books, onStatusChange} = this.props
+		let sortBooks = shelf => (
+			books.filter(book => book.shelf === shelf)
+		)
 		
 		return(
 			<div className="list-bookshelves">
@@ -33,12 +37,11 @@
 						< li key={shelf.id} className = "bookshelf-list-item" >
 							<div className="list-bookshelves-top">
 								<h2>{shelf.label}</h2>
-								 {console.log(shelf.label)}
 							</div>
 							
 							<div className="book-list">
 								{sortBooks(shelf.name).map((book)=>(
-								<Book key={book.id} book={book} shelves={shelves}/>
+								<Book key={book.id} book={book} shelves={shelves} onStatusChange={this.onBookStatusChange}/>
 								))}
 							</div>
 						</li>))}
