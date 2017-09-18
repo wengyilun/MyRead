@@ -4,6 +4,7 @@ import './App.css';
 import ListBookshelves from './ListBookshelves'
 import * as BooksAPI from './utils/BooksAPI'
 import BookSearcher from "./BookSearcher";
+import { Route } from 'react-router-dom'
 
 class App extends Component {
     state = {
@@ -304,12 +305,15 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <h2>My Reads</h2>
-			<div className="open-search">
-				<a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
-			</div>
+		
         </div>
-        <BookSearcher/>
-        {/*<ListBookshelves books={this.state.books} onUpdate={this.onUpdateStatus} />*/}
+        <Route exact path="/" render={() => (
+           <ListBookshelves books={this.state.books}
+                            onUpdate={this.onUpdateStatus} />
+        )}/>
+		  <Route exact path="/search" render={() => (
+			  <BookSearcher/>
+		  )}/>
       </div>
     );
   }

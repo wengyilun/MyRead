@@ -12,7 +12,11 @@ class BookSearcher extends Component {
   render(){
    return(
 	   <div className="search-container">
+		   <div className="back-button">
+			   <a onClick={() => this.setState({ showSearchPage: true })}>Back</a>
+		   </div>
 		   <input className="search-bar" placeholder="Search by book or author name"></input>
+		
 		   <div className="seach-book-list">This is book list</div>
 	   </div>
    )

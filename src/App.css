@@ -106,8 +106,12 @@ li {
   height: 100%;
   background-color: #F9F0E9;
 }
-
 .list-bookshelves-top{
+   height: 34px;
+   background-color: #82923A;
+}
+
+.bookshelf-item-top{
   /* currently REading: */
   font-family: Melo-Regular;
   color: #593814;
@@ -161,8 +165,6 @@ li {
 }
 
 .book-footer{
-
-
   display: flex ;
   flex-direction: column;
   width: 200px;
@@ -221,23 +223,46 @@ li {
 -------------------- */
 .open-search {
   position: fixed;
-  right: 25px;
-  bottom: 25px;
+  right: 0px;
+  top: 5px;
 }
 
 .open-search a {
+  font-family: Melo-Regular;
   display: block;
-  width: 180px;
-  background: #BEBC9B;
+  width: 80px;
+  background: #A37152;
+  color: white;
   background-image: url('./icons/add.svg');
   background-repeat: no-repeat;
   background-position: right;
   background-size: 28px;
   text-align: left;
+  padding: 6px 20px;
+  border-radius: 4px 0 0 4px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  font-size: 24px;
+  }
+
+.back-button {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+}
+
+.back-button a {
+  display: block;
+  width: 180px;
+  background: #BEBC9B;
+  background-image: url('./icons/arrow-back.svg');
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 28px;
+  text-align: right;
   padding: 10px 20px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   font-size: 28px;
-  }
+}
 
 .search-container{
   width: 100%;

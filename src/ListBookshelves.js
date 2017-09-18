@@ -30,10 +30,14 @@
 		
 		return(
 			<div className="list-bookshelves" >
+			    <div className="list-bookshelves-top"></div>
+				<div className="open-search">
+					<a onClick={() => this.setState({ showSearchPage: true })}>Add</a>
+				</div>
 					< ul className = "bookshelf-list">
 						{shelves.map((shelf)=> (
 						< li key={shelf.id} className = "bookshelf-list-item" >
-							<div className="list-bookshelves-top">
+							<div className="bookshelf-item-top">
 								<h2>{shelf.label}</h2>
 							</div>
 							
