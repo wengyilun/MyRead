@@ -1,6 +1,7 @@
 /**
  * Created by mbp on 9/9/17.
  */
+import * as Utils from './utils.js'
 
 const api = "https://reactnd-books-api.udacity.com"
 
@@ -20,9 +21,6 @@ export const getAll = () =>
 	.then(data => data.books)
 	
 export const update = (book, shelf) => {
-  console.log('book', book)
-	console.log('shelf', shelf)
-	console.log(book.id)
 	fetch(`${api}/books/${book.id}`, {
     method: 'PUT',
     headers: {
@@ -30,7 +28,10 @@ export const update = (book, shelf) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({shelf})
-}).then(res => res.json())
-   .then(res => {
-    console.log(res)
-   })}
+	}).then(res => {
+	    res = res.json()
+	})
+	.catch(() => {
+	  console.log('Update failed')
+	})
+   }

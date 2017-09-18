@@ -3,9 +3,11 @@ import logo from './logo.svg';
 import './App.css';
 import ListBookshelves from './ListBookshelves'
 import * as BooksAPI from './utils/BooksAPI'
+import BookSearcher from "./BookSearcher";
 
 class App extends Component {
     state = {
+		showSearchPage: false,
         books:  [
 			// {
 			// 	"title": "The Linux Command Line",
@@ -281,26 +283,33 @@ class App extends Component {
 			// }
 			 ]
 	}
-	
 	componentDidMount(){
 		BooksAPI.getAll().then((books) => {
-		  console.log(books)
 		  this.setState({books})
 		})
+		
 	}
 	onUpdateStatus = (book, shelf) => {
 	   console.log('onUpdateStatus', book)
-	   BooksAPI.update(book, shelf);
+	  
+	   let res = BooksAPI.update(book, shelf);
+	   console.log('res', res)
 	   // Todo: need to add fail listener
 	}
+	
+	
 	
 	render() {
     return (
       <div className="App">
         <div className="App-header">
           <h2>My Reads</h2>
+			<div className="open-search">
+				<a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+			</div>
         </div>
-        <ListBookshelves books={this.state.books} onUpdate={this.onUpdateStatus}/>
+        <BookSearcher/>
+        {/*<ListBookshelves books={this.state.books} onUpdate={this.onUpdateStatus} />*/}
       </div>
     );
   }

@@ -4,13 +4,18 @@
 }
 
 html, body, .root{
+  width: 100%;
   height: 100%;
+  position: relative;
 }
 
 .App {
   display: flex;
   width: 100%;
+  top: 0;
+  bottom: 0;
   text-align: center;
+  position: absolute;
 }
 
 .App-intro {
@@ -214,5 +219,46 @@ li {
 
 /*  Search
 -------------------- */
+.open-search {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+}
 
+.open-search a {
+  display: block;
+  width: 180px;
+  background: #BEBC9B;
+  background-image: url('./icons/add.svg');
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 28px;
+  text-align: left;
+  padding: 10px 20px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  font-size: 28px;
+  }
+
+.search-container{
+  width: 100%;
+  background-color: #F9F0E9;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-bar{
+  color: #593814;
+  font-size: 36px;
+  padding-bottom: 4px;
+  /* Top Bar: */
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.02), 0 3px 8px rgba(0, 0, 0, 0.02);
+}
+
+.seach-book-list{
+  width: 100%;
+  height: 100%;
+}
 

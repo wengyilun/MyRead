@@ -11,20 +11,17 @@
 			{name:'wantToRead',  label: 'Want to Read', books:[]},
 			{name:'read',  label:'Read', books:[]}
 		],
-			 // 'currentlyReading': {label: 'Currently Reading', books: []},
-		     // 'wantToRead': { label: 'Want to Read', books: []},
-		     // 'read': { label: 'Read', books: []}
-		books: [
-		]
 	}
 	 
 	 onBookStatusChange =(book, newShelf) => {
 	     book.shelf = newShelf
-		 this.props.onUpdate(book, newShelf)
+		 let res = this.props.onUpdate(book, newShelf)
+		 console.log(res)
 		 this.setState({books: this.props.books})
 	 }
 	 
 	render(){
+	 
 		const {shelves} = this.state
 		const {books, onUpdate} = this.props
 		let sortBooks = shelf => (
@@ -32,7 +29,7 @@
 		)
 		
 		return(
-			<div className="list-bookshelves">
+			<div className="list-bookshelves" >
 					< ul className = "bookshelf-list">
 						{shelves.map((shelf)=> (
 						< li key={shelf.id} className = "bookshelf-list-item" >
@@ -53,8 +50,3 @@
  }
  
  export default ListBookshelves
- 
- // load in books object
- // read in category
-		// create a section if not already exsit
-		// add book to it
