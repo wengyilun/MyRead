@@ -245,26 +245,25 @@ li {
   }
 
 .back-button {
-  position: fixed;
-  right: 25px;
-  bottom: 25px;
+  position: absolute;
+  left: 5px;
+  top: 15px;
 }
 
 .back-button a {
   display: block;
-  width: 180px;
-  background: #BEBC9B;
+  width: 36px;
   background-image: url('./icons/arrow-back.svg');
   background-repeat: no-repeat;
   background-position: left;
-  background-size: 28px;
+  background-size: 36px;
   text-align: right;
   padding: 10px 20px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  font-size: 28px;
+  font-size: 0;
 }
 
 .search-container{
+  position: relative;
   width: 100%;
   background-color: #F9F0E9;
   display: flex;

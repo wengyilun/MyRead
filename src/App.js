@@ -309,7 +309,8 @@ class App extends Component {
         </div>
         <Route exact path="/" render={() => (
            <ListBookshelves books={this.state.books}
-                            onUpdate={this.onUpdateStatus} />
+                            onUpdate={this.onUpdateStatus}
+                             />
         )}/>
 		  <Route exact path="/search" render={() => (
 			  <BookSearcher/>

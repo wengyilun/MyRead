@@ -3,6 +3,7 @@
  */
  import React, {Component} from 'react'
  import Book from './Book'
+ import { Link } from 'react-router-dom'
  
  class ListBookshelves extends Component{
 	state = {
@@ -21,7 +22,6 @@
 	 }
 	 
 	render(){
-	 
 		const {shelves} = this.state
 		const {books, onUpdate} = this.props
 		let sortBooks = shelf => (
@@ -32,7 +32,7 @@
 			<div className="list-bookshelves" >
 			    <div className="list-bookshelves-top"></div>
 				<div className="open-search">
-					<a onClick={() => this.setState({ showSearchPage: true })}>Add</a>
+					<Link to="/search">Add</Link>
 				</div>
 					< ul className = "bookshelf-list">
 						{shelves.map((shelf)=> (

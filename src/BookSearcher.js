@@ -3,6 +3,7 @@
  */
  import React, {Component} from 'react'
  import Book from './Book'
+ import { Link } from 'react-router-dom'
  
 class BookSearcher extends Component {
   state={
@@ -13,7 +14,7 @@ class BookSearcher extends Component {
    return(
 	   <div className="search-container">
 		   <div className="back-button">
-			   <a onClick={() => this.setState({ showSearchPage: true })}>Back</a>
+			   <Link to="/">Back</Link>
 		   </div>
 		   <input className="search-bar" placeholder="Search by book or author name"></input>
 		
