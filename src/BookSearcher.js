@@ -23,7 +23,7 @@ class BookSearcher extends Component {
 	onBookStatusChange =(book, newShelf) => {
 		book.shelf = newShelf
 		let res = this.props.onUpdate(book, newShelf)
-		this.setState({books: this.props.books})
+		// this.setState({books: this.props.books})
 	}
 	
 	

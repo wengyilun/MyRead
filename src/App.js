@@ -15,10 +15,16 @@ class App extends Component {
 		BooksAPI.getAll().then((books) => {
 		  this.setState({books})
 		})
-		
 	}
 	onUpdateStatus = (book, shelf) => {
-	   let res = BooksAPI.update(book, shelf);
+	    let res = BooksAPI.update(book, shelf)
+		// this.setState({books: this.state.books})
+		this.setState(state => ({
+			books: state.books.concat([ book ])
+		}))
+		// BooksAPI.getAll().then((books) => {
+		// 	this.setState({books})
+		// })
 	   // Todo: need to add fail listener
 	}
 	
