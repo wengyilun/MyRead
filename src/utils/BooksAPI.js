@@ -1,7 +1,6 @@
 /**
  * Created by mbp on 9/9/17.
  */
-import * as Utils from './utils.js'
 
 const api = "https://reactnd-books-api.udacity.com"
 
@@ -35,3 +34,15 @@ export const update = (book, shelf) => {
 	  console.log('Update failed')
 	})
    }
+   
+
+export const search = (query, maxResults) =>
+	fetch(`${api}/search`, {
+		method: 'POST',
+		headers: {
+			...headers,
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({ query, maxResults })
+	}).then(res => res.json())
+	.then(data => data.books)

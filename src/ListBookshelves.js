@@ -17,7 +17,6 @@
 	 onBookStatusChange =(book, newShelf) => {
 	     book.shelf = newShelf
 		 let res = this.props.onUpdate(book, newShelf)
-		 console.log(res)
 		 this.setState({books: this.props.books})
 	 }
 	 
