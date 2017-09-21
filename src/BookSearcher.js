@@ -26,11 +26,15 @@ class BookSearcher extends Component {
 		// this.setState({books: this.props.books})
 	}
 	
-	
 	render(){
     const {onSearch, searchResults, onAddBookToShelf } = this.props
     const {query, } = this.state
-  
+		
+	let alreadySaved = result => {
+		let res = this.props.books.filter(book => result.id === book.id)
+		console.log(res)
+		return res
+	}
    return(
 	   <div className="search-container">
 		   <div className="back-button">
@@ -43,7 +47,8 @@ class BookSearcher extends Component {
 			
 		   <div className="seach-book-list">
 			   {this.props.searchResults.map((book) =>
-			      <Book key={book.id} book={book} onStatusChange= {this.onBookStatusChange}/>
+			      <Book key={book.id} book={book} onStatusChange= {this.onBookStatusChange}
+			      disabled={alreadySaved(book).length >0 }/>
 			   )}
 		   </div>
 	   </div>

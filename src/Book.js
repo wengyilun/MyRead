@@ -8,18 +8,18 @@ class Book extends Component {
 		 currentlyReading : 'Currently Reading',
 		 wantToRead : 'Want to Read',
 		 read:'Read',
+		 disabled: false,
   }
   
-  render ()
+	render ()
 {
 	const {shelf} = this.state
-	const {book, onStatusChange} = this.props
-	
+	const {book, onStatusChange, disabled} = this.props
 	return (
-		<div className="book-list-item-container">
+		<div className="book-list-item-container" style={{opacity: `${this.props.disabled ? 0.3 : 1}`}}>
 			<div className="book-holder">
 				<div className="book-status-changer">
-					<select className="book-status-menu" value={book.shelf}
+					<select className="book-status-menu" value={book.shelf} disabled={this.props.disabled}
 							onChange={ (event) => onStatusChange(book, event.target.value)}>
 						<option value="none" disabled>Move to ...</option>
 						<option value="currentlyReading">Currently Reading</option>

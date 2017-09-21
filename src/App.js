@@ -22,9 +22,6 @@ class App extends Component {
 		this.setState(state => ({
 			books: state.books.concat([ book ])
 		}))
-		// BooksAPI.getAll().then((books) => {
-		// 	this.setState({books})
-		// })
 	   // Todo: need to add fail listener
 	}
 	
@@ -50,7 +47,8 @@ class App extends Component {
 		  <Route exact path="/search" render={() => (
 			  <BookSearcher searchResults={this.state.searchResults}
 			                onSearch={this.onSearchBooks}
-							onUpdate={this.onUpdateStatus}/>
+							onUpdate={this.onUpdateStatus}
+							books={this.state.books}/>
 		  )}/>
       </div>
     );
