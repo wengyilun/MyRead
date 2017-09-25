@@ -14,14 +14,23 @@ class App extends Component {
 	componentDidMount(){
 		BooksAPI.getAll().then((books) => {
 		  this.setState({books})
+		  
 		})
 	}
 	onUpdateStatus = (book, shelf) => {
 	    let res = BooksAPI.update(book, shelf)
 		// this.setState({books: this.state.books})
-		this.setState(state => ({
-			books: state.books.concat([ book ])
-		}))
+		console.log('shelf:', shelf)
+		if(shelf === 'none'){
+			this.setState(state => ({
+				books: state.books.splice([ book ])
+			}))
+		}else {
+			this.setState(state => ({
+				books: state.books.concat([book])
+			}))
+		}
+		
 	   // Todo: need to add fail listener
 	}
 	
@@ -37,7 +46,6 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <h2>My Reads</h2>
-		
         </div>
         <Route exact path="/" render={() => (
            <ListBookshelves books={this.state.books}
@@ -50,6 +58,11 @@ class App extends Component {
 							onUpdate={this.onUpdateStatus}
 							books={this.state.books}/>
 		  )}/>
+		  {this.state.books.length <= 0 && (
+			  <div className="App-loader-container">
+				  <div className="App-loader"/>
+			  </div>
+		  )}
       </div>
     );
   }
