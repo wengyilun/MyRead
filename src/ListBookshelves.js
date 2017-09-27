@@ -43,7 +43,7 @@
 							
 							<div className="book-list">
 								{sortBooks(shelf.name).map((book)=>(
-								<Book key={book.id} book={book} shelves={shelves} onStatusChange={this.onBookStatusChange} />
+								<Book key={book.id} data={book} onStatusChange={this.onBookStatusChange} />
 								))}
 							</div>
 						</li>))}

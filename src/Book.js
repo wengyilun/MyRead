@@ -5,28 +5,42 @@ import React, {Component} from 'react'
 
 class Book extends Component {
 	state = {
-		currentlyReading : 'Currently Reading',
-		wantToRead : 'Want to Read',
-		read:'Read',
-		disabled: false,
+		status: '',
+		saved: '',
+		shelves: {
+			currentlyReading: 'Currently Reading',
+			wantToRead: 'Want to Read',
+			read: 'Read'
+		}
 	}
-	getShelfValue = shelf => (
-		shelf === undefined ? 'none' : shelf
+	
+	// TODO: Add binding to status state change
+	getShelfValue = status => (
+		status === undefined ? 'none' : status
 	)
+	onStatusChange = (data, shelf) => {
+		this.setState({saved: shelf !== 'none'})
+		this.setState({status: shelf})
+		console.log('this.state.saved:',this.state.saved)
+		this.props.onStatusChange(data, shelf)
+	}
+	
+	componentDidMount(){
+		this.setState({status: this.props.data.shelf})
+		this.setState({saved: this.props.saved})
+		console.log('this.props.shelves,',this.props.shelves)
+	}
 	
 	render ()
 	{
-		const {shelf} = this.state
-		const {book, onStatusChange, saved} = this.props
+		const {status, saved, shelves} = this.state
+		const {data, onStatusChange} = this.props
 		return (
 			<div className="book-list-item-container" >
 				<div className="book-holder" >
-					{/*<h3 className={saved ? "book-msg" : "hidden"} >*/}
-						{/*{saved ? `Saved` : null}*/}
-					{/*</h3>*/}
 					<div className="book-status-changer"  >
-						<select className="book-status-menu" value={this.getShelfValue(book.shelf)}
-								onChange={ (event) => onStatusChange(book, event.target.value)}>
+						<select className="book-status-menu" value={this.getShelfValue(this.props.data.shelf)}
+								onChange={ (event) => this.onStatusChange(data, event.target.value)}>
 							<option value="move" disabled>Move to ...</option>
 							<option value="currentlyReading">Currently Reading</option>
 							<option value="wantToRead">Want to Read</option>
@@ -35,14 +49,14 @@ class Book extends Component {
 						</select>
 					</div>
 					<div className="book-cover" style={{
-						backgroundImage: `url(${book.imageLinks && book.imageLinks.smallThumbnail})`,
+						backgroundImage: `url(${data.imageLinks && data.imageLinks.smallThumbnail})`,
 						opacity: `${saved ? 0.3 : 1}`
 					}}/>
 				</div>
 				<div className="book-footer" >
-					<div className="book-title" style={{opacity: `${saved ? 0.4 : 1}`}}>{book.title} </div>
-					<div className="book-author" style={{opacity: `${saved ? 0.4 : 1}`}}>{book.authors}</div>
-					<div className="book-status">{this.state[book.shelf]}</div>
+					<div className="book-title" style={{opacity: `${saved ? 0.4 : 1}`}}>{data.title} </div>
+					<div className="book-author" style={{opacity: `${saved ? 0.4 : 1}`}}>{data.authors}</div>
+					<div className="book-status">{shelves && shelves[status]}</div>
 				</div>
 			</div>
 		)

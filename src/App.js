@@ -9,12 +9,17 @@ import { Route } from 'react-router-dom'
 class App extends Component {
     state = {
         books:  [],
-        searchResults:[]
+        searchResults:[],
+		shelves: {
+			currentlyReading: 'Currently Reading',
+			wantToRead: 'Want to Read',
+			read: 'Read'
+		}
 	}
 	componentDidMount(){
 		BooksAPI.getAll().then((books) => {
 		  this.setState({books})
-		  
+		  console.log(books)
 		})
 	}
 	onUpdateStatus = (book, shelf) => {
@@ -49,6 +54,7 @@ class App extends Component {
         </div>
         <Route exact path="/" render={() => (
            <ListBookshelves books={this.state.books}
+           					shelves={this.state.shelves}
                             onUpdate={this.onUpdateStatus}
                              />
         )}/>
