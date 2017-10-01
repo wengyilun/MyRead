@@ -206,6 +206,8 @@ li {
   flex-direction: column;
   width: 200px;
   padding: 0 20px;
+  position: relative;
+  align-items: center;
 }
 
 .book-title{
@@ -253,11 +255,17 @@ li {
 }
 
 .book-status{
-  padding-top: 1em;
+  padding: 0.5em 1.2em;
   font-size: 10px;
   font-style: italic;
   text-transform: uppercase;
-  color: #82923A;
+  color: white;
+  background-color: #82923A;
+  border-radius: 6px;
+  position: absolute;
+  bottom: -32px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16), 0 2px 6px rgba(0, 0, 0, 0.23);
+
 }
 
 /*  Search
@@ -327,6 +335,7 @@ li {
   height: 100%;
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
 }
 
 @media(min-width: 921px) {
@@ -356,6 +365,7 @@ li {
   .book-list{
     flex-flow: column;
   }
+  
   .book-list-item-container {
     flex-direction: column;
   }
@@ -368,15 +378,21 @@ li {
     font-size: 3em;
   }
 
+  .book-holder {
+    margin: 30px 30px 14px 30px;
+  }
+
   .book-footer{
     padding: 0 4px;
+    margin-top: 10px;
+    margin-bottom: 30px;
   }
   .book-title{
     font:600 18px/1.6 'cardo';
     padding: 10px 4px 6px 4px;
   }
   .book-author{
-    padding: 10px 4px;
+    padding: 6px 4px 10px 4px;
   }
   .open-search a {
     font-size: 0;
@@ -386,6 +402,5 @@ li {
   }
   .search-bar{
     font-size: 24px;
-
   }
 }

@@ -1,50 +1,64 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import ListBookshelves from './ListBookshelves'
 import * as BooksAPI from './utils/BooksAPI'
 import BookSearcher from "./BookSearcher";
 import { Route } from 'react-router-dom'
+import {getIdToShelfMap} from './utils/commonUtils'
 
+// TODO: Bookshelf 'none' doesn't update search result
+// TODO: API result sometimes doesn't stick.
+// TODO: If you should use cancat or add
 class App extends Component {
     state = {
         books:  [],
         searchResults:[],
-		shelves: {
-			currentlyReading: 'Currently Reading',
-			wantToRead: 'Want to Read',
-			read: 'Read'
-		}
+		bookMap: new Map()
 	}
+	
 	componentDidMount(){
+		this.getBooks()
+	}
+	
+	getBooks(){
 		BooksAPI.getAll().then((books) => {
-		  this.setState({books})
-		  console.log(books)
+			this.setState({books:books})
+			this.setState({bookMap: getIdToShelfMap(books)})
+			
 		})
 	}
-	onUpdateStatus = (book, shelf) => {
-	    let res = BooksAPI.update(book, shelf)
-		// this.setState({books: this.state.books})
-		console.log('shelf:', shelf)
-		if(shelf === 'none'){
-			this.setState(state => ({
-				books: state.books.splice([ book ])
-			}))
-		}else {
-			this.setState(state => ({
-				books: state.books.concat([book])
-			}))
-		}
-		
-	   // Todo: need to add fail listener
+	
+	// TODO: need to find better way to update item only
+	onUpdateStatus = (book, shelf, mode) => {
+	    BooksAPI.update(book, shelf).then(() => {
+			switch (mode) {
+				case 'shelf':
+					let index = this.state.books.findIndex(result => result.id === book.id)
+					this.state.books[index] = book
+					
+					this.setState({books: this.state.books})
+			
+				case 'search':
+					index = this.state.searchResults.findIndex(result => result.id === book.id)
+					this.state.searchResults[index] = book
+					this.setState({searchResults: this.state.searchResults})
+			}
+			
+			this.getBooks()
+		})
 	}
 	
 	onSearchBooks = (query, maxResult) => {
 		BooksAPI.search(query, maxResult).then((searchResults) => {
-			this.setState({searchResults})
+			let arr = searchResults.map(result => {
+				let shelf = this.state.bookMap.get(result.id) === undefined ? 'none' :  this.state.bookMap.get(result.id).value
+				return {...result, shelf: shelf}
+			})
+			this.setState( state => ({
+				searchResults: arr
+			}))
 	   })
 	}
-	
 	
 	render() {
     return (
@@ -62,7 +76,7 @@ class App extends Component {
 			  <BookSearcher searchResults={this.state.searchResults}
 			                onSearch={this.onSearchBooks}
 							onUpdate={this.onUpdateStatus}
-							books={this.state.books}/>
+							/>
 		  )}/>
 		  {this.state.books.length <= 0 && (
 			  <div className="App-loader-container">

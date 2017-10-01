@@ -21,27 +21,19 @@ class BookSearcher extends Component {
 	}
 	
 	onBookStatusChange =(book, newShelf) => {
-		book.shelf = newShelf
-		let res = this.props.onUpdate(book, newShelf)
-		console.log('res:', res)
+		let res = this.props.onUpdate(book, newShelf, 'search')
 	}
 	
+	listBooks = (searchResults)=>{
+		return (
+			(searchResults &&  searchResults.length>0 && searchResults.map((book) =>(
+				<Book key={book.id} data={book} onShelf={book.shelf !== "none"} onStatusChange={this.onBookStatusChange }/>
+			))))
+	}
 	
 	render(){
-		const {onSearch, searchResults, onAddBookToShelf } = this.props
-		const {query, } = this.state
-		
-		let alreadySaved = result => {
-			let filteredResults = this.props.books.filter(book => {
-			let shelf = "none"
-				if(result.id === book.id){
-					result["shelf"] = book.shelf;
-					return result
-				}
-				return null
-			})
-			return filteredResults
-		}
+		const {searchResults} = this.props
+		const {query } = this.state
 		
 		return(
 		   <div className="search-container">
@@ -55,10 +47,7 @@ class BookSearcher extends Component {
 					  onChange={(event) => this.updateQuery(event.target.value)}/>
 				
 			   <div className="seach-book-list">
-				   {this.props.searchResults && this.props.searchResults.length>0 && this.props.searchResults.map((book) =>
-					  <Book key={book.id} data={book} onStatusChange= {this.onBookStatusChange}
-					  saved={alreadySaved(book).length >0 }/>
-				   )}
+					   {this.listBooks( searchResults)}
 			   </div>
 		   </div>
 	    )

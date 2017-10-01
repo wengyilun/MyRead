@@ -20,20 +20,21 @@ export const getAll = () =>
 	.then(data => data.books)
 	
 export const update = (book, shelf) => {
+	return (
 	fetch(`${api}/books/${book.id}`, {
-    method: 'PUT',
-    headers: {
-      ...headers,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({shelf})
-	}).then(res => {
-	    res = res.json()
-	})
-	.catch(() => {
-	  console.log('Update failed')
-	})
-   }
+		method: 'PUT',
+		headers: {
+		  ...headers,
+		  'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({shelf})
+		}).then(res => res.json())
+		.catch(() => {
+		  console.log('Update failed')
+		})
+	)
+}
+
    
 
 export const search = (query, maxResults) =>
