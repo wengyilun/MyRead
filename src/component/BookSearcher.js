@@ -2,7 +2,7 @@
  * Created by mbp on 17/09/2017.
  */
  import React, {Component} from 'react'
- import Book from './Book'
+ import Book from "./Book";
  import { Link } from 'react-router-dom'
  
 class BookSearcher extends Component {

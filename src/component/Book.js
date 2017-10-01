@@ -2,7 +2,7 @@
  * Created by mbp on 14/09/2017.
  */
 import React, {Component} from 'react'
-import {getShelfLabel} from './utils/commonUtils'
+import {getShelfLabel} from '../utils/commonUtils'
 
 const Book = ((props) => {
 	const onStatusChange = (data, shelf) => {

@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import ListBookshelves from './ListBookshelves'
 import * as BooksAPI from './utils/BooksAPI'
-import BookSearcher from "./BookSearcher";
+import ListBookshelves from './component/ListBookshelves'
+import BookSearcher from "./component/BookSearcher";
 import { Route } from 'react-router-dom'
 import {getIdToShelfMap} from './utils/commonUtils'
 
-// TODO: Bookshelf 'none' doesn't update search result
-// TODO: API result sometimes doesn't stick.
 // TODO: If you should use cancat or add
 class App extends Component {
     state = {

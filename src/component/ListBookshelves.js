@@ -2,10 +2,9 @@
  * Created by mbp on 9/9/17.
  */
  import React, {Component} from 'react'
- import Book from './Book'
  import { Link } from 'react-router-dom'
  import Shelf from './Shelf'
- import {SHELVES} from './utils/commonUtils'
+ import {SHELVES} from '../utils/commonUtils'
 
 const ListBookshelves = ((props) => {
 	const {books, shelves, onUpdate} = props
