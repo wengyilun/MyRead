@@ -6,7 +6,6 @@ import BookSearcher from "./component/BookSearcher";
 import { Route } from 'react-router-dom'
 import {getIdToShelfMap} from './utils/commonUtils'
 
-// TODO: If you should use cancat or add
 class App extends Component {
     state = {
         books:  [],
@@ -41,18 +40,29 @@ class App extends Component {
 					this.state.searchResults[index] = book
 					this.setState({searchResults: this.state.searchResults})
 			}
-			
 			this.getBooks()
 		})
 	}
 	
 	onSearchBooks = (query, maxResult) => {
+		if (query === ''){
+			this.setState(state => ({
+				searchResults: []
+			}))
+			return
+		}
+		
 		BooksAPI.search(query, maxResult).then((searchResults) => {
-			let arr = searchResults.map(result => {
-				let shelf = this.state.bookMap.get(result.id) === undefined ? 'none' :  this.state.bookMap.get(result.id).value
-				return {...result, shelf: shelf}
-			})
-			this.setState( state => ({
+			let arr
+			if(searchResults.length > 0) {
+				arr = searchResults.map(result => {
+					let shelf = this.state.bookMap.get(result.id) === undefined ? 'none' : this.state.bookMap.get(result.id).value
+					return {...result, shelf: shelf}
+				})
+			}else{
+				arr = []
+			}
+			this.setState(state => ({
 				searchResults: arr
 			}))
 	   })

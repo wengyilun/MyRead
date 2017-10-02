@@ -32,10 +32,8 @@ export const update = (book, shelf) => {
 	)
 }
 
-   
-
 export const search = (query, maxResults) =>
-	fetch(`${api}/search`, {
+	(fetch(`${api}/search`, {
 		method: 'POST',
 		headers: {
 			...headers,
@@ -43,4 +41,6 @@ export const search = (query, maxResults) =>
 		},
 		body: JSON.stringify({ query, maxResults })
 	}).then(res => res.json())
-	.then(data => data.books)
+	  .then(data => data.books)
+	
+)
