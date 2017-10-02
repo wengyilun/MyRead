@@ -126,7 +126,7 @@ li {
   background-color: #F9F0E9;
 }
 .list-bookshelves-top{
-   height: 34px;
+   height: 40px;
    background-color: #82923A;
 }
 
@@ -153,7 +153,6 @@ li {
 
 /*  Book List
 -------------------- */
-
 .book-list{
   display: flex;
   flex-flow: row wrap;
@@ -181,19 +180,6 @@ li {
   display:none;
 }
 
-.book-msg{
-  position: absolute;
-  right: -52px;
-  top: -1px;
-  padding: 4px 6px;
-  border-radius: 0 0 4px ;
-  font-size:11px;
-  color: white;
-  background-color: #E796B6;
-  letter-spacing:.1em;
-  text-transform: uppercase;
-  opacity: 0.9;
-}
 .book-cover {
    width: 100%;
    height: 200px;
@@ -278,8 +264,8 @@ li {
   font-family: Melo-Regular;
   display: block;
   width: 80px;
-  /*background-color: #593814;*/
-  background: #A37152;
+  background-color: #593814;
+  /*background: #A37152;*/
   color: white;
   background-image: url('./icons/add.svg');
   background-repeat: no-repeat;

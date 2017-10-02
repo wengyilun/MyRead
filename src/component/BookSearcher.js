@@ -9,15 +9,10 @@
 class BookSearcher extends Component {
 	state={
 		query: '',
-		itemsPerPage: 10,
-		total: 0
+		itemsPerPage: 10
+		// total: 0
 	}
 
-	// TODO: Add paging
-	clearQuery = () => {
-		this.setState({query: ''})
-	}
-	
 	onBookStatusChange =(book, newShelf) => {
 		let res = this.props.onUpdate(book, newShelf, 'search')
 	}
