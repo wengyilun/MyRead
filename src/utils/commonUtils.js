@@ -1,5 +1,6 @@
-export const BASE_URL = process.env.PUBLIC_URL;
-
+/**
+ * Created by mbp on 30/09/2017.
+ */
 export const SHELVES = {
 		currentlyReading: 'Currently Reading',
 		wantToRead: 'Want to Read',

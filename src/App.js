@@ -4,18 +4,14 @@ import * as BooksAPI from './utils/BooksAPI'
 import ListBookshelves from './component/ListBookshelves'
 import BookSearcher from "./component/BookSearcher";
 import { Route } from 'react-router-dom'
-import * as Utils from './utils/commonUtils'
+import {getIdToShelfMap} from './utils/commonUtils'
 
 class App extends Component {
-
     state = {
         books:  [],
         searchResults:[],
 		bookMap: new Map()
 	}
-	
-	baseUrl = process.env.PUBLIC_URL;
-	
 	
 	componentDidMount(){
 		this.getBooks()
@@ -24,7 +20,7 @@ class App extends Component {
 	getBooks(){
 		BooksAPI.getAll().then((books) => {
 			this.setState({books:books})
-			this.setState({bookMap: Utils.getIdToShelfMap(books)})
+			this.setState({bookMap: getIdToShelfMap(books)})
 			
 		})
 	}
@@ -78,13 +74,13 @@ class App extends Component {
         <div className="App-header">
           <h2>My Reads</h2>
         </div>
-        <Route exact path={Utils.BASE_URL + "/" } render={() => (
+        <Route exact path="/" render={() => (
            <ListBookshelves books={this.state.books}
            					shelves={this.state.shelves}
                             onUpdate={this.onUpdateStatus}
                              />
         )}/>
-		  <Route exact path={Utils.BASE_URL + "/search"} render={() => (
+		  <Route exact path="/search" render={() => (
 			  <BookSearcher searchResults={this.state.searchResults}
 			                onSearch={this.onSearchBooks}
 							onUpdate={this.onUpdateStatus}
