@@ -5,12 +5,12 @@
  import Book from "./Book";
  import Pagination from "./Pagination"
  import { Link } from 'react-router-dom'
- 
+ import * as Utils from '../utils/commonUtils'
+
 class BookSearcher extends Component {
 	state={
 		query: '',
 		itemsPerPage: 10
-		// total: 0
 	}
 
 	onBookStatusChange =(book, newShelf) => {
@@ -49,7 +49,7 @@ class BookSearcher extends Component {
 		return(
 		   <div className="search-container">
 			   <div className="back-button">
-				   <Link to="/">Back</Link>
+				   <Link to={Utils.BASE_URL + "/"}>Back</Link>
 			   </div>
 			   <input className="search-bar"
 					  value={query}
