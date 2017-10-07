@@ -1,7 +1,14 @@
 ## ReadMe Project
 
 
-This is a ReactJs project created for **Udacity's ReactJS Nanodegree Program**. It allows the user to search and save books to your bookshelves; to add, move, and remove books from bookshelves via API calls to a backend NodeJS server.
+This is a ReactJs project created for **Udacity's ReactJS Nanodegree Program**. 
+It allows users to search and save the books to be read later. It has the following functionalities:
+1. search books by name or author
+2. add book to shelf 
+3. remove books from shelf
+4. move books among shelves 
+
+All of which are handled via API calls to a backend NodeJS server.
 
 ### Demo
 -----------
