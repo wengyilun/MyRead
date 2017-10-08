@@ -10,9 +10,8 @@ class BookSearcher extends Component {
 	state={
 		query: '',
 		itemsPerPage: 10
-		// total: 0
 	}
-
+	
 	onBookStatusChange =(book, newShelf) => {
 		let res = this.props.onUpdate(book, newShelf, 'search')
 	}
@@ -22,13 +21,14 @@ class BookSearcher extends Component {
 		this.props.onSearch(query, this.state.itemsPerPage )
 	}
 	
+	// called when user has changed the number of page to display
 	onPagerChange = (value)=>{
 		this.setState({itemsPerPage: value})
 	}
 	
 	listBooks = (searchResults)=>{
 		if(searchResults.length <= 0) return
-		
+		// Only display subset of the search result. Length defined but the user
 		const subResult = searchResults.slice(0, this.state.itemsPerPage)
 		return (
 			(subResult.map((book) =>(

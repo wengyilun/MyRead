@@ -20,19 +20,18 @@ class App extends Component {
 	getBooks(){
 		BooksAPI.getAll().then((books) => {
 			this.setState({books:books})
+			// Create a map of book id as key and an object with shelf label and name as value
 			this.setState({bookMap: getIdToShelfMap(books)})
-			
 		})
 	}
 	
-	// TODO: need to find better way to update item only
+	// Update API call with different callback function based on different mode it was called with
 	onUpdateStatus = (book, shelf, mode) => {
 	    BooksAPI.update(book, shelf).then(() => {
 			switch (mode) {
 				case 'shelf':
 					let index = this.state.books.findIndex(result => result.id === book.id)
 					this.state.books[index] = book
-					
 					this.setState({books: this.state.books})
 			
 				case 'search':
@@ -45,6 +44,7 @@ class App extends Component {
 	}
 	
 	onSearchBooks = (query, maxResult) => {
+	    // If search query is empty string, clear the page.
 		if (query === ''){
 			this.setState(state => ({
 				searchResults: []
@@ -54,6 +54,8 @@ class App extends Component {
 		
 		BooksAPI.search(query, maxResult).then((searchResults) => {
 			let arr
+			// If result set is not empty, add a 'shelf' property and a value to each record
+			// based on whether it's found on the shelf or not.
 			if(searchResults.length > 0) {
 				arr = searchResults.map(result => {
 					let shelf = this.state.bookMap.get(result.id) === undefined ? 'none' : this.state.bookMap.get(result.id).value

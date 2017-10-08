@@ -10,7 +10,6 @@ export const SHELVES = {
 
 export const getIdToShelfMap = (books) => {
 	let shelfMap = new Map()
-	
 	for (let book of books) {
 		shelfMap.set(book.id, {value: book.shelf, label: SHELVES[book.shelf]})
 	}

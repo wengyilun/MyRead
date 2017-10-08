@@ -94,7 +94,6 @@ li {
 }
 
 .App-loader {
-  /*animation: App-loader-spin infinite 0.8s linear;*/
   width: 100px;
   height: 60px;
   background-image: url('./icons/loader.svg');
@@ -102,10 +101,6 @@ li {
   background-position: center;
   align-self: center;
 }
-/*@keyframes App-loader-spin {*/
-  /*from { transform: rotate(0deg); }*/
-  /*to { transform: rotate(360deg); }*/
-/*}*/
 
 .App-header {
   background-color: #BFBAA3;
@@ -115,8 +110,6 @@ li {
   font-family: Melo-Regular;
   color: #FFFFFF;
 }
-
-
 
 /*  Book shelf
 -------------------- */
@@ -176,6 +169,7 @@ li {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   display:flex;
 }
+
 .hiddnen{
   display:none;
 }
@@ -249,7 +243,6 @@ li {
   position: absolute;
   bottom: -42px;
   /*box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16), 0 2px 6px rgba(0, 0, 0, 0.23);*/
-
 }
 
 /*  Search
@@ -265,7 +258,6 @@ li {
   display: block;
   width: 80px;
   background-color: #593814;
-  /*background: #A37152;*/
   color: white;
   background-image: url('./icons/add.svg');
   background-repeat: no-repeat;
