@@ -1,4 +1,4 @@
-## ReadMe Project
+## MyRead: A Book Tracking App
 ---------------
 
 This is a ReactJs project created for **Udacity's ReactJS Nanodegree Program**. 
